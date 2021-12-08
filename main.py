@@ -6,7 +6,7 @@ import re
 
 app = Flask(__name__)
 storage = None
-twitter_api, analytics_api = config.connect_with_services()
+# twitter_api, analytics_api = config.connect_with_services()
 
 RESULT_TRANSLATION = {
     'positive': 'pozytywny',
