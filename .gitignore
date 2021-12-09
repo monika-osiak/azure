@@ -2,3 +2,12 @@ venv/
 .idea/
 .env
 __pycache__/
+
+#frontend
+**/.vscode
+**/node_modules
+**/public/build
+**/build
+**/.DS_Store
+**/.svelte-kit
+**/package

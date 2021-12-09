@@ -1,0 +1,15 @@
+version: "3"
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    image: svelte
+    container_name: azure-svelte
+    ports:
+      - "5010:5000"
+      - "35729:35729"
+    volumes:
+      - ./frontend/src:/usr/src/app/src
+      - ./frontend/public:/usr/src/app/public
+    command: npm run dev -- --host --open
