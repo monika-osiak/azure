@@ -6,7 +6,7 @@ import re
 
 app = Flask(__name__)
 storage = None
-# twitter_api, analytics_api = config.connect_with_services()
+twitter_api, analytics_api = config.connect_with_services()
 
 RESULT_TRANSLATION = {
     "positive": "pozytywny",
@@ -59,6 +59,7 @@ def sentiment_view():
         ).items(300)
 
         for tweet in tweets:
+            print(tweet)
             total_count += 1
             created_at = str(tweet.created_at).split(" ")[0]
             last_id = tweet.id
@@ -77,33 +78,33 @@ def sentiment_view():
                 message="Nie znaleziono tweetów spełniających podane wymagania.",
             )
 
-        for i in range(0, total_count, 10):
-            j = i + batch_size
-            if j > total_count:
-                j = total_count
+        # for i in range(0, total_count, 10):
+        #     j = i + batch_size
+        #     if j > total_count:
+        #         j = total_count
 
-            tweets_to_analyse = [
-                clean_txt(tweet["content"]) for tweet in tweets_analysed[i:j]
-            ]
-            results = analytics_api.analyze_sentiment(tweets_to_analyse)
+        #     tweets_to_analyse = [
+        #         clean_txt(tweet["content"]) for tweet in tweets_analysed[i:j]
+        #     ]
+        #     results = analytics_api.analyze_sentiment(tweets_to_analyse)
 
-            k = 0
-            for tweet in tweets_analysed[i:j]:
-                sentiment_scores = results[k]["confidence_scores"]
+        #     k = 0
+        #     for tweet in tweets_analysed[i:j]:
+        #         sentiment_scores = results[k]["confidence_scores"]
 
-                if sentiment_scores.neutral > 0.9:
-                    neutral += 1
-                    sentiment = "neutral"
-                elif sentiment_scores.positive > sentiment_scores.negative:
-                    positive += 1
-                    sentiment = "positive"
-                else:
-                    negative += 1
-                    sentiment = "negative"
+        #         if sentiment_scores.neutral > 0.9:
+        #             neutral += 1
+        #             sentiment = "neutral"
+        #         elif sentiment_scores.positive > sentiment_scores.negative:
+        #             positive += 1
+        #             sentiment = "positive"
+        #         else:
+        #             negative += 1
+        #             sentiment = "negative"
 
-                tweet["sentiment"] = RESULT_TRANSLATION[sentiment]
+        #         tweet["sentiment"] = RESULT_TRANSLATION[sentiment]
 
-                k += 1
+        #         k += 1
 
         positive_percent = round(positive / total_count * 100, 2)
         negative_percent = round(negative / total_count * 100, 2)
