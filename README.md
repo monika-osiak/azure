@@ -48,7 +48,7 @@ przeanalizowane wpisy z przypisanym sentymentem (ostatecznie stwierdziliśmy, ż
 do realizacji celu biznesowego),
 4. *(niewykorzystane)* Azure Functions — cykliczne wywoływanie skryptu czyszczącego bazę danych (jak wyżej)
 
-![](https://github.com/monika-osiak/azure-ml/blob/readme-update/resources/components.png)
+![](https://github.com/monika-osiak/azure-ml/blob/main/resources/components.png)
 
 ## Implementacja
 Projekt jest dostępny pod adresem: [link](https://)
