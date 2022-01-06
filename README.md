@@ -1,4 +1,4 @@
-# EY - Aspect based sentiment analysis
+# Analiza sentymentu tweetów z MS Azure
 > Projekt w ramach przedmiotu "Programowanie usług w chmurze", Politechnika Warszawska, Wydział Elektryczny, 2021Z
 
 Autorzy:
