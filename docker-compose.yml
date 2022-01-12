@@ -9,7 +9,17 @@ services:
     ports:
       - "5010:5000"
       - "35729:35729"
+    depends_on:
+      - backend
     volumes:
       - ./frontend/src:/usr/src/app/src
       - ./frontend/public:/usr/src/app/public
     command: npm run dev -- --host --open
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    image: flask
+    container_name: azure-flask
+    ports:
+      - "5001:5000"
