@@ -18,11 +18,11 @@ def connect_with_services():
     auth.set_access_token(TWITTER_ACCESS_TOKEN, TWITTER_ACCESS_TOKEN_SECRET)
     twitter_api = tweepy.API(auth, wait_on_rate_limit=True)
 
-    #ta_credential = AzureKeyCredential(AZURE_TEXT_ANALYTICS_KEY)
-    #text_analytics_api = TextAnalyticsClient(
-    #    endpoint=AZURE_TEXT_ANALYTICS_ENDPOINT,
-    #    credential=ta_credential)
+    ta_credential = AzureKeyCredential(AZURE_TEXT_ANALYTICS_KEY)
+    text_analytics_api = TextAnalyticsClient(
+       endpoint=AZURE_TEXT_ANALYTICS_ENDPOINT,
+       credential=ta_credential)
 
-    text_analytics_api = None
+    #text_analytics_api = None
 
     return twitter_api, text_analytics_api

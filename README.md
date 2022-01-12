@@ -3,7 +3,7 @@
 
 Autorzy:
 1. Monika Osiak (291094),
-2. Sebastian Kalisz (XXXXXX)
+2. Sebastian Kalisz (285072)
 
 ## Opis
 ### Wstęp
