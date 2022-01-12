@@ -56,4 +56,4 @@ Projekt jest dostępny pod adresem: [link](https://)
 Prezentacja projektu jest dostępna pod adresem: [link](https://)
 
 ## Wnioski
-TO DO
+* Podczas pracy nad projektem Microsoft dokonał znacznych zmian w usłudze Text Analytics. Dzięki jednolitemu interfejsowi nie odczuliśmy zmian i nie musieliśmy wprowadzać modyfikacji w kodzie. Microsoft udowodnił tym samym, ze potrafi wprowadzać znaczące modyfikacje do swoich serwisów, nie obciązając tym swoich uzytkowników.
