@@ -51,9 +51,12 @@ do realizacji celu biznesowego),
 ![](https://github.com/monika-osiak/azure-ml/blob/main/resources/components.png)
 
 ## Implementacja
-Projekt jest dostępny pod adresem: [link](https://)
+Projekt jest dostępny pod adresem: [link](https://pucflask2021.azurewebsites.net/)
 
-Prezentacja projektu jest dostępna pod adresem: [link](https://)
+Prezentacja projektu jest dostępna pod adresem: [link](https://drive.google.com/file/d/1sHTmbu_Y1tIp0-83wYWgelCp2V2yDt6Y/view?usp=sharing)
 
 ## Wnioski
 * Podczas pracy nad projektem Microsoft dokonał znacznych zmian w usłudze Text Analytics. Dzięki jednolitemu interfejsowi nie odczuliśmy zmian i nie musieliśmy wprowadzać modyfikacji w kodzie. Microsoft udowodnił tym samym, ze potrafi wprowadzać znaczące modyfikacje do swoich serwisów, nie obciązając tym swoich uzytkowników.
+* Jednocześnie niejasne są niektóe poradniki deployowania usług. Według większości proces powinien zająć około minuty, a zdażyło nam się, że dopiero po około 30 minut aplikacja była publicznie dostępna.
+* Najwygodniej korzystać chyba z Azure CLI, zamiast robić wsyzstko z przeglądarkowego GUI, sam proces deploymentu wydaje się wówczas szybszy.
+* Z usług Azure można korzystac również w lokalnych projektach, wystarczy endpoint oraz klucz do uruchomionej usługi, aby wykorzystać ją poprzez API, co bardzo ułatwia testy w środowisku developerskim.
