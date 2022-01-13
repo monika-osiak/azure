@@ -29,7 +29,6 @@
         for (let key in data2) {
             dataFetch[key] = data2[key];
         }
-        console.log(dataFetch);
         dataChart = {
             labels: ['Negatywny','Pozytywny','Neutralny'],
             datasets: [
