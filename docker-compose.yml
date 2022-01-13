@@ -4,16 +4,15 @@ services:
     build:
       context: ./frontend
       dockerfile: Dockerfile
-    image: svelte
+    image: azure/svelte
     container_name: azure-svelte
     ports:
-      - "5010:5000"
-      - "35729:35729"
+      - "3010:3000"
     depends_on:
       - backend
     volumes:
       - ./frontend/src:/usr/src/app/src
-      - ./frontend/public:/usr/src/app/public
+      - ./frontend/static:/usr/src/app/static
     command: npm run dev -- --host --open
   backend:
     build:
@@ -23,3 +22,6 @@ services:
     container_name: azure-flask
     ports:
       - "5001:5000"
+    volumes:
+      - ./backend:/code
+    command: /bin/sh -c "python3 /code/main.py"

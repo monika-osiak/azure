@@ -1,10 +1,13 @@
 from flask import Flask, render_template, make_response, request, jsonify
+from flask_cors import CORS, cross_origin
 from datetime import datetime
 import tweepy
 import config
 import re
 
 app = Flask(__name__)
+CORS(app)
+#app.config['CORS_HEADERS'] = 'Content-Type'
 storage = None
 twitter_api, analytics_api = config.connect_with_services()
 
@@ -20,10 +23,9 @@ def clean_txt(tweet):
     result = re.sub(r"https?:\/\/\S+", "", result)
     return result
 
-
 @app.route("/", methods=["GET", "POST"])
+@cross_origin(origin='*')
 def sentiment_view():
-
     if request.method == "GET":
         return render_template("welcome.html")
 
@@ -73,10 +75,11 @@ def sentiment_view():
             )
 
         if total_count == 0:
-            return render_template(
-                "welcome.html",
-                message="Nie znaleziono tweetów spełniających podane wymagania.",
-            )
+            return make_response({"message": "Nie znaleziono tweetów spełniających podane wymagania"}, 400)
+            # return render_template(
+            #     "welcome.html",
+            #     message="Nie znaleziono tweetów spełniających podane wymagania.",
+            # )
 
         for i in range(0, total_count, 10):
             j = i + batch_size
@@ -110,15 +113,17 @@ def sentiment_view():
         negative_percent = round(negative / total_count * 100, 2)
         neutral_percent = round(neutral / total_count * 100, 2)
 
-        return render_template(
-            "welcome.html",
-            tweets=tweets_analysed[:10],
-            positive_percent=positive_percent,
-            negative_percent=negative_percent,
-            neutral_percent=neutral_percent,
-            total_count=total_count,
-        )
+        # return render_template(
+        #     "welcome.html",
+        #     tweets=tweets_analysed[:10],
+        #     positive_percent=positive_percent,
+        #     negative_percent=negative_percent,
+        #     neutral_percent=neutral_percent,
+        #     total_count=total_count,
+        # )
 
+        return make_response({"tweets": tweets_analysed[:10], "positive_percent": positive_percent, "negative_percent": negative_percent, "neutral_percent": neutral_percent, "total_count": total_count}, 200)
+        #return make_response({"test": 2}, 200)
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+    app.run(host="0.0.0.0", port=5000, debug=True)
